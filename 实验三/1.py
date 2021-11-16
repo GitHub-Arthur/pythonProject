@@ -37,7 +37,7 @@ while True:
                 print("%s\t\t%s\t\t%s\t\t%s\t" % (count, i["name"], i["number"], i["classroom"]))
             continue
         else:
-            student.remove(student[int(number)-1])
+            student.remove(student[int(number) - 1])
             print("删除成功")
     elif id == "3":
         number = input("请输入你要查找同学的学号")
