@@ -52,6 +52,7 @@ class StudentManager(Student):
                 break
         else:
             print("there is not have the student")
+            cls.delete()
 
     # 3、查找学生（根据学号查询，显示该学生的所有信息）
     @classmethod
@@ -75,7 +76,7 @@ class StudentManager(Student):
                 cls.students[index].number = str(input("Please input your new number:"))
                 cls.students[index].group = str(input("Please input your new group:"))
                 cls.write()
-                return  # 考虑到学生有同名的情况
+                break  # 考虑到学生有同名的情况
         else:
             print("there is not have the student")
 
