@@ -30,15 +30,25 @@ while True:
         student.append(stu)
         print("添加成功")
     elif id == "2":
-        number = input("请输入你要删除的学生的学号（如果不知道学号，请先查看全部人,序号-1）")
-        if number == "-1":
-            print("序号\t姓名\t学号\t班级")
-            for count, i in enumerate(student, 1):
-                print("%s\t\t%s\t\t%s\t\t%s\t" % (count, i["name"], i["number"], i["classroom"]))
-            continue
-        else:
-            student.remove(student[int(number) - 1])
-            print("删除成功")
+        del_flag = 1
+        while del_flag == 1:
+            number = input("请输入你要删除的学生的学号,如果不知道学号,请先查看全部人(序号-1）,退出删除操作(序号-2)")
+            if number == "-1":
+                print("序号\t姓名\t学号\t班级")
+                for count, i in enumerate(student, 1):
+                    print("%s\t\t%s\t\t%s\t\t%s\t" % (count, i["name"], i["number"], i["classroom"]))
+                continue
+            elif number == "-2":
+                print("退出删除操作")
+                break
+            else:
+                for count, i in enumerate(student, 1):
+                    if i["number"] == number:
+                        student.remove(student[int(count) - 1])
+                        print("删除成功")
+                        del_flag = 0
+            if del_flag == 1:
+                print("删除失败,请输入正确学号")
     elif id == "3":
         number = input("请输入你要查找同学的学号")
         for stud in student:
