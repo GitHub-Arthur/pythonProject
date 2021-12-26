@@ -26,21 +26,23 @@ def parse_page1(html):
     etree.HTML()：
     调用HTML类对HTML文本进行初始化，成功构造XPath解析对象，同时可以自动修正HTML文本（标签缺少闭合自动添加上）
     '''
-    pages = html_elem.xpath('//*[@id="app"]/div/div/div[1]/dl/dd/div/div/div[1]')
+    pages = html_elem.xpath('//*[@id="app"]/div/div/div[1]/dl/dd/div/div')
     '''
     快速获取xpath：
     先F12,然后用Ctrl+Shift+C快速选中Web界面的元素，然后在元素上右键-->复制-->复制XPath
     '''
     for i in pages:
-        titles = i.xpath('./p[1]/a/text()')
-        infos = i.xpath('./p[2]/text()')
-        scores = i.xpath('./p[3]/text()')
+        titles = i.xpath('./div[1]/p[1]/a/text()')
+        infos = i.xpath('./div[1]/p[2]/text()')
+        times = i.xpath('./div[1]/p[3]/text()')
+        scores = i.xpath('./div[2]/p/i/text()')
         '''
         text()函数
         获取元素文本内容
         '''
         print("----------------------------------------")
-        print("电影名：", titles[0], '\n', "", infos[0].strip(), '\n', "", scores[0] + '分')
+        print("电影名：", titles[0], '\n', "", infos[0].strip(), '\n', "",times[0].strip(), '\n',"", "".join(scores)+'分')
+
         time.sleep(1)
 
 
@@ -60,6 +62,5 @@ def crawl():
         data = parse_page1(html)
         time.sleep(1)  # 延迟1秒
     print('结束爬取')
-
 
 crawl()
