@@ -23,7 +23,7 @@ class Chinese(Person):
         Person.talk(self)
 
 
-obj = Chinese("nancy",'18','male',"普通话")
+obj = Chinese("nancy",'20','male',"普通话")
 
 print(obj.name)  # 对应场景A
 print(obj.age)  # 对应场景B
